@@ -9,7 +9,7 @@
             return;
         }
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/users/user/', {
+            const response = await fetch('http://0.0.0.0:8000/api/users/user/', {
                 headers: {
                     'Authorization': `Token ${token}`,
                     'Content-Type': 'application/json',

@@ -5,10 +5,10 @@
 
   async function handleLogin(event: SubmitEvent) {
     event.preventDefault();
-    
+
     try {
       // API call will be made here
-      const response = await fetch('http://127.0.0.1:8000/api/users/login/', {
+      const response = await fetch('http://0.0.0.0:8000/api/users/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -18,16 +18,16 @@
       });
       const result = await response.json();
       console.log('Login response:', result);
-      
+
       if (!result.token) {
         console.error('Token alınamadı:', result);
         return;
       }
-      
+
       localStorage.setItem('token', result.token);
       console.log('Saved token:', localStorage.getItem('token'));
       await goto('/');
-      
+
     } catch (error) {
       console.error('Login error:', error);
     }
@@ -36,7 +36,7 @@
 
 <div class="login-container">
   <h1>Login</h1>
-  
+
   <form on:submit={handleLogin} class="login-form">
     <div class="form-group">
       <label for="email">Email</label>
@@ -61,6 +61,11 @@
     </div>
 
     <button type="submit">Login</button>
+
+    <div class="register-link">
+      Don't have an account? 
+      <a href="/register">Register here</a>
+    </div>
   </form>
 </div>
 
@@ -124,4 +129,20 @@
   button:hover {
     background-color: #0056b3;
   }
-</style> 
+
+  .register-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .register-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+</style>

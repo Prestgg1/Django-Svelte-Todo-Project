@@ -6,11 +6,13 @@ from .models import CustomUser
 from .serializers import RegisterSerializer, LoginSerializer,CustomUserSerializer
 
 class RegisterAPIView(APIView):
+    permission_classes = []
+    authentication_classes = []
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            token, created = Token.objects.get_or_create(user=user)
+            token = Token.objects.get_or_create(user=user)
             return Response({"token": token.key}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
