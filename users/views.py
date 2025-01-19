@@ -4,7 +4,7 @@ from rest_framework import status, viewsets, permissions
 from rest_framework.authtoken.models import Token
 from .models import CustomUser
 from .serializers import RegisterSerializer, LoginSerializer,CustomUserSerializer
-
+""" 
 class RegisterAPIView(APIView):
     permission_classes = []
     authentication_classes = []
@@ -42,3 +42,4 @@ class LogoutAPIView(APIView):
     def post(self, request):
         request.user.auth_token.delete()
         return Response(status=status.HTTP_200_OK)
+ """
