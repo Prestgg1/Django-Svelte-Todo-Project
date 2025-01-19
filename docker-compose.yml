@@ -22,14 +22,19 @@ services:
       - redis
   db:
     image: postgres
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: django
+      POSTGRES_NAME: django_db
+      POSTGRES_USER: django
+      POSTGRES_HOST: db
   redis:
     image: redis:7
     container_name: redis_cache
     ports:
-      - "6379:6379"  
-    command: ["redis-server", "--appendonly", "yes"] 
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
 
 volumes:
   postgres_data:

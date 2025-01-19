@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'todo_project.wsgi.application'
 DATABASES = {
   'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'mypassword',
-        'HOST': 'my-postgres',
+        'NAME': 'django_db',
+        'USER': 'django',
+        'PASSWORD': 'django',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
@@ -150,7 +150,7 @@ CORS_ALLOWED_ORIGINS = [
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://redis_cache:6379/1',  
+        'LOCATION': 'redis://redis_cache:6379/1',
     }
 }
 
